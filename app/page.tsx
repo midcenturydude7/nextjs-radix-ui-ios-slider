@@ -1,4 +1,7 @@
 "use client";
+
+import Slider from "./slider";
+
 export default function Page() {
   return (
     <div className="mx-auto w-full max-w-xs">
@@ -11,6 +14,8 @@ export default function Page() {
         className="space-y-8 rounded"
       >
         <p className="text-sm font-medium text-white/60">Settings</p>
+
+        <Slider />
 
         <input type="range" name="native-slider" className="w-full" />
 
