@@ -15,9 +15,9 @@ export default function Page() {
       >
         <p className="text-sm font-medium text-white/60">Settings</p>
 
-        <Slider />
+        <Slider name="radix-slider" />
 
-        <input type="range" name="native-slider" className="w-full" />
+        {/* <input type="range" name="native-slider" className="w-full" /> */}
 
         <div className="mt-5 flex items-center justify-between">
           <button
