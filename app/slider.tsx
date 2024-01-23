@@ -12,8 +12,10 @@ export default function Slider({ name }: { name?: string }) {
         className="relative flex h-1.5 grow items-center transition-[height] group-hover:h-4"
         name={name}
       >
-        <RadixSlider.Track className="relative h-full grow overflow-hidden rounded-full bg-gray-700">
-          <RadixSlider.Range className="absolute h-full bg-gray-300 transition group-hover:bg-white" />
+        <RadixSlider.Track className="relative h-full grow overflow-hidden rounded-full bg-gray-700 group-has-[:focus-visible]:outline group-has-[:focus-visible]:outline-2 group-has-[:focus:-isible]:outline-offset-2 group-has-[:focus-visible]:outline-sky-500">
+          <RadixSlider.Range className="absolute h-full bg-gray-300 transition group-hover:bg-white group-has-[:focus-visible]:bg-white">
+            <div className="absolute inset-0 bg-green-500" />
+          </RadixSlider.Range>
         </RadixSlider.Track>
         <RadixSlider.Thumb />
       </RadixSlider.Root>
