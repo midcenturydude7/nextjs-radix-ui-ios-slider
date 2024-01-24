@@ -8,10 +8,12 @@ export default function Slider({
   name,
   min = 0,
   max = 100,
+  step = 1,
 }: {
   name?: string;
   min?: number;
   max?: number;
+  step?: number;
 }) {
   let [isUsingPointer, setIsUsingPointer] = React.useState(false);
   let [internalValue, setInternalValue] = React.useState(50);
@@ -26,6 +28,7 @@ export default function Slider({
           // onValueChange={([v]) => setInternalValue(v)}
           min={min}
           max={max}
+          step={step}
           defaultValue={[50]}
           className="relative flex h-1.5 grow items-center transition-[height] group-hover:h-4"
           name={name}
@@ -40,8 +43,10 @@ export default function Slider({
               let pixelsPerUnit = (max - min) / sliderWidth;
               let diffInUnits = diffInPixels * pixelsPerUnit;
               let newValue = stash.internalValue + diffInUnits;
+              let clampedValue = clamp(newValue, min, max);
+              let steppedValue = roundToStep(clampedValue, step);
 
-              setInternalValue(clamp(newValue, min, max));
+              setInternalValue(steppedValue);
             }
           }}
           onBlur={() => setIsUsingPointer(false)}
@@ -68,4 +73,9 @@ export default function Slider({
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max);
+}
+
+function roundToStep(num: number, step: number) {
+  const inverseStep = 1 / step;
+  return Math.round(num * inverseStep) / inverseStep;
 }
