@@ -25,7 +25,10 @@ export default function Slider({
         <SpeakerXMarkIcon className="size-5 transition group-hover:scale-125 group-hover:text-white" />
         <RadixSlider.Root
           value={[internalValue]}
-          // onValueChange={([v]) => setInternalValue(v)}
+          onValueCommit={([v]) => {
+            console.log(v);
+            setInternalValue(v);
+          }}
           min={min}
           max={max}
           step={step}
